@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Document</title>
+    <style>
+      main{
+        width:auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .LibraryBook{
+        width:150px;
+        display:flex;
+        flex-direction: column;
+      
+      }     
+       img {
+        width:150px;
+        margin: 5px;
+      }
+      #info
+      {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Harry Potter Book List</h1>
+    <%- include("menu") %> 
+    <main>
+      <%for (let i = 0; i < bookLog.length; i++) { %> 
+       <section class="LibraryBook">  
+        <img src="<%= bookLog[i].image %>" alt="<%= bookLog[i].bookTitle %> Image">
+	  <br>
+        <div id="info">
+       <p><%= bookLog[i].bookTitle%> </p>
+       <p><%= bookLog[i].bookAuthor%> </p>
+	  
+	  <%if(bookLog[i].borrow==="") {%>
+      <a href="/bor/<%= bookLog[i].bookTitle %>">
+        <button>BORROW</button></a>
+
+      <%} else {%>
+        <% if (!usernameFromSession || usernameFromSession.cardNo!==bookLog[i].borrow){%> 
+          <p>A book CANNOT be borrowed</p>
+        <% } else if(usernameFromSession.cardNo===bookLog[i].borrow) {%>
+          <a href="/ret/<%=bookLog[i].bookTitle%>">
+          <button>RETURN</button></a>
+        <% } %>
+      
+      <% } %></div>
+      
+  </section>
+   <% } %></main>
+  </body>
+</html>

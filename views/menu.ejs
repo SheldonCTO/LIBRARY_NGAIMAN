@@ -1,0 +1,11 @@
+<h2>Menu  </h2>
+<%= console.log(usernameFromSession)%>
+<nav>
+<p> <a href="/">Home</a> |
+<% if(!usernameFromSession){%>
+ <a href="/login">Login</a> |
+<% } else {%>
+Login Name: <%=usernameFromSession.name%> |
+ <a href="/logout">Logout</a> |
+<% } %></p>
+</nav>
