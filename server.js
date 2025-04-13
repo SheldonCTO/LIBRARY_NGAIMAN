@@ -33,7 +33,7 @@ const mongoose = require("mongoose");
 
 // 1. copy and paste your MongoDb connection string
 const CONNECTION_STRING =
-  "mongodb+srv://ccto:ITfqPJJqtBB4Dkny@cluster0.fbhtgjh.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://XXXXXXXXX@cluster0.fbhtgjh.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(CONNECTION_STRING);
 
